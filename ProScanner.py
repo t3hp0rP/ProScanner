@@ -1,4 +1,4 @@
-from core.core import Core,Watcher
+from core.core import Core
 import time
 import sys
 import getopt
@@ -71,7 +71,6 @@ def main():
 	print '[*] Start'
 	sTime = time.time()
 	# print str(sTime)
-	Watcher()
 	a = Core(url,t,c,r)
 	a.createThread()
 	a.getRes()
