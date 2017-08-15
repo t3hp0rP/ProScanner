@@ -63,10 +63,10 @@ class Core(object):
 		while not queue.empty():
 			url = queue.get()
 			# print '[*] trying ' + self.__url+'/'+url[0]
-			sys.stdout.write('[*] trying ' + self.__url+'/'+url[0] + '\n')
+			sys.stdout.write('[*] trying ' + self.__url+url[0] + '\n')
 			sys.stdout.flush()
 			try:
-				res = self.__session.get(self.__url+'/'+url[0],cookies=self.__cookie,timeout=10)
+				res = self.__session.get(self.__url+url[0],cookies=self.__cookie,timeout=10)
 				if (str(res.status_code)[0] in ['1','2','3','4']) and (res.status_code != 404):
 					self.result_success.append([url[0],res.status_code])
 			except Exception as e:
@@ -78,6 +78,7 @@ class Core(object):
 	def getRes(self):
 		self.prettytable.align['url'] = 1
 		self.prettytable.padding_width = 1
+		self.result_success = sorted(self.result_success,key=lambda x: x[1])
 		for s in self.result_success:
 			self.prettytable.add_row([s[0],s[1]])
 		for f in self.result_fail:

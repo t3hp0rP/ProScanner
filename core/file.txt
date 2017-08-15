@@ -1,5 +1,8 @@
 robots.txt
 index.php
+.index.php.swp
+.index.php.swp~
+index.php~
 4dmIn.php
 4dmln.php
 4dmLn.php
