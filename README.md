@@ -28,3 +28,15 @@ github:https://github.com/WangYihang/SourceLeakHacker
 [] random header
 [x] beautify
 [] dynamic dictionary
+
+-------
+## Test:
+
+Url:http://218.76.35.75:65080/ (Web CTF)
+
+Result:
+- Success : 100%
+- Cost : 26.5s
+- Speed : 184.56 Url/s
+
+![result](http://upload-images.jianshu.io/upload_images/6949366-6741f2b4c8979e0b.png?imageMogr2/auto-orient/strip)
