@@ -157,6 +157,7 @@ logon.php/
 .history
 .hta
 .htaccess
+.user.ini
 .htpasswd
 .listing
 .listings
