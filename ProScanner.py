@@ -10,6 +10,8 @@ def usage():
 	-t or --thread_num : The thread number you want to set, Default 50
 	-c or --cookie : The cookie you want to use, Default Null
 	-r or --retry : Retry times, Default 10
+	-R or --recursive : Recursive search
+	-d or --depth : depth of recursive search, Default 5
 	
 	Eg : python Pscanner.py -u localhost -t 30 -c 'user=admin;pass=123' -r 5
 
@@ -30,6 +32,8 @@ def main():
 	t = 30
 	r = 10
 	c = ''
+	r = False
+	d = 5
 	try:
 		opt,argv = getopt.getopt(sys.argv[1:],'hu:t:',['help','url'])
 		if opt == []:
@@ -67,15 +71,18 @@ def main():
 				retry = int(v)
 			else :
 			 	print 'retry times is NOT a digit!'
-			 	exit(0)	
+			 	exit(0)
+		# if o in ('-R','--recursive'):
+		# 	r = True
+		# 	if o in ('-d','--depth') and v.isdigit():
+				
 	print '[*] Start'
 	sTime = time.time()
 	# print str(sTime)
 	a = Core(url,t,c,r)
 	a.createThread()
 	a.getRes()
-	print '[*] End ------'
-	print '[*] Used ' + str(time.time()-sTime)
+	print '[*] Used ' + str(time.time()-sTime) + ' s'
 
 if __name__ == '__main__':
 	main()

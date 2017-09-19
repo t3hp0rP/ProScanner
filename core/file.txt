@@ -1,5 +1,9 @@
 robots.txt
 index.php
+index.php.bak
+.index.php.bak
+index.bak
+~index.bak
 .index.php.swp
 .index.php.swp~
 index.php~
@@ -10,8 +14,14 @@ index.php~
 admLn.php
 admln.php
 admIn.php
+UploadFile.class.php.bak
+UploadFile.class.php
 conn.php
 config.php
+common.php
+core.php
+function.php
+functions.php
 connect.php
 sql.php
 mysql.php

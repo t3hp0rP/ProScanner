@@ -3,6 +3,7 @@ import threadpool
 import Queue
 import sys
 import os
+# import time
 from prettytable import PrettyTable
 
 #init
@@ -16,13 +17,15 @@ class Core(object):
 			retry --- retry times
 	"""
 
-	def __init__(self, url, threadNum = 50, cookie = {}, retry=10):
+	def __init__(self, url, threadNum = 50, cookie = {}, retry=10, recursive=False, depth=5):
 		super(Core, self).__init__()
 		self.__url = url
 		self.__threadNum = threadNum
 		self.__cookie = cookie
 		self.__session = requests.Session()
 		self.__retry = retry
+		self.__recursive = recursive
+		self.__depth = depth
 		self.result_success = []
 		self.result_fail = []
 		self.prettytable = PrettyTable(['url','statusCode'])
@@ -58,12 +61,17 @@ class Core(object):
 		tasks = threadpool.makeRequests(self.req,func_var)
 		[pool.putRequest(task) for task in tasks]
 		pool.wait()
+		print ''
+		print '[*]finish!'
 
 	def req(self,queue):
 		while not queue.empty():
 			url = queue.get()
 			# print '[*] trying ' + self.__url+'/'+url[0]
-			sys.stdout.write('[*] trying ' + self.__url+url[0] + '\n')
+			outstr = '[*] trying ' + self.__url+url[0]
+			sys.stdout.write(outstr + '\r')
+			# time.sleep(0.4)
+			# sys.stdout.write(' ' * len(outstr) + '\r') #beautify... Orz
 			sys.stdout.flush()
 			try:
 				res = self.__session.get(self.__url+url[0],cookies=self.__cookie,timeout=10)
