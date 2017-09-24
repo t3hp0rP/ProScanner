@@ -55,6 +55,7 @@ r58.php
 dra.php
 r00t.php
 root.php
+export.php
 mma.php
 filesman.php
 Locus7s.php
